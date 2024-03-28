@@ -33,10 +33,10 @@ class NewsListener
     public function onParseArticles(Template $template, array $data, Module $module): void
     {
         $prepend = $module instanceof ModuleNewsReader;
-        $result = $this->imageCollector->addFromUuid($data['socialImage'], $prepend);
+        $result = $this->imageCollector->addFromUuid($data['socialImage'] ?? null, $prepend);
 
         if (!$result && $data['addImage']) {
-            $this->imageCollector->addFromUuid($data['singleSRC'], $prepend);
+            $this->imageCollector->addFromUuid($data['singleSRC'] ?? null, $prepend);
         }
     }
 }
